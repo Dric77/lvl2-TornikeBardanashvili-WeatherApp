@@ -11,6 +11,7 @@ import Searchbtn from './Components/Searchbtn';
 import FirstCol from './Components/FirstCol';
 import DaysForecast from './Components/DaysForecast';
 import Modal from './Components/Modal';
+import LastCol from './Components/LastCol';
 
 
 function App() {      
@@ -53,12 +54,7 @@ function App() {
 
         <DaysForecast />
 
-        <div className="col-4">
-          <div className="city-detail">
-            <h6 className='current-time'> {CurrentTime()} </h6>
-            <h4> country name </h4>
-          </div>
-        </div>
+      <LastCol />
 
       </div>
     </div>

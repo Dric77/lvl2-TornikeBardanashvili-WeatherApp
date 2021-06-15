@@ -8,11 +8,9 @@ import Searchbtn from './Searchbtn';
 
 
 const FirstCol = ({data, setData ,input, url, setShowModal, overly, setOverly}) => {
-
-  const [dayData, setDayData] = useState();
     
   let APIkey = 'b90d5851d1184aff9356323979e96021';
-  let daysUrl = `https://api.weatherbit.io/v2.0/forecast/daily?city=Tbilisi,NC&key=b90d5851d1184aff9356323979e96021`;
+  let daysUrl = `https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh&key=b90d5851d1184aff9356323979e96021`;
 
 
   const getData = (url) => {
@@ -36,13 +34,6 @@ const FirstCol = ({data, setData ,input, url, setShowModal, overly, setOverly}) 
     })
   };
 
-  // const getDayData = (url) => {
-  //    getDays(url).then( dayWeather => {
-  //      console.log(dayWeather)
-  //       // setDayData(dayWeather)
-  //    }) 
-  // }
-
  useEffect( () => {
    getData(url);
 }, [] );
@@ -56,7 +47,7 @@ useEffect( () => {
 
 return(
 
-  <div className="col-4">
+  <div className="col-6">
 
         <p>
           

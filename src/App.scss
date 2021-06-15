@@ -14,9 +14,15 @@ $min-color: #f15644;
 .col-6 {
     width: 100%;
 }
-
+.col-3 {
+    flex-grow: 3;
+    width: 100%;
+}
 .mt-1 {
     margin-top: 10px;
+}
+.mt-3 {
+    margin-top: 30px;
 }
 
 .ul {
@@ -25,8 +31,42 @@ $min-color: #f15644;
     li {
         list-style: none;
         font-size: 14px;
-        padding-bottom: 5px;
+        padding-bottom: 10px;
         font-weight: 100;
+    }
+    
+    .last-li {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        div {
+            display: flex;
+            flex-direction: row !important;
+            align-items: center;
+            h5 {
+                font-size: 16px;
+                font-weight: 400;
+                
+            }
+            img {
+                width: 35px;
+            }
+        }
+    }
+
+    .day-item div {
+        margin-top: 10px;
+        color: rgb(53, 53, 53);
+        display: flex;
+        padding-bottom: 3px;
+        flex-direction: row !important;
+
+        h6{ 
+            font-size: 16px;
+            font-weight: 400;
+            margin-right: 5px;
+        }
     }
 }
 
@@ -167,9 +207,9 @@ $min-color: #f15644;
         }
     }
 
-        .col-4 {
+        .col-6 {
             width: 100%;
-            flex-grow: 1;
+            flex-grow: 6;
 
             div {
                 display: flex;
@@ -230,7 +270,7 @@ $min-color: #f15644;
 
             .day-forecast {
                 display: flex;
-                justify-content: start;
+                justify-content: end;
 
             }
 
