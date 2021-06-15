@@ -9,6 +9,7 @@ export const CurrentTime = () => {
     let hours = newDate.getHours();
     let min = newDate.getMinutes();
 
+
     return(hours + ':' + min + ',' + date + '/' + month)
 
     
