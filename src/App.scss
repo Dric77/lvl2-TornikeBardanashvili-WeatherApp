@@ -1,293 +1,332 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 $min-color: #f15644;
 
-.row {
-    display: flex;
-    flex-direction: row !important ;
+// animation style
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(146, 146, 146) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
+// animation style end
+.row {
+  display: flex;
+  flex-direction: row !important ;
+}
+.col-4 {
+  flex-grow: 4;
+  width: 100%;
+}
 .col-6 {
-    width: 100%;
+  width: 100%;
+  flex-grow: 6;
+}
+.col-8 {
+  flex-grow: 8;
+  width: 100%;
 }
 .col-3 {
-    flex-grow: 3;
-    width: 100%;
+  flex-grow: 3;
+  width: 100%;
 }
 .mt-1 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .mt-3 {
-    margin-top: 30px;
+  margin-top: 30px;
+}
+.pb-1 {
+  padding-bottom: 10px;
+}
+
+.close-modal {
+  cursor: pointer;
+  padding: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  color: rgb(75, 75, 75);
+  font-weight: 300;
 }
 
 .ul {
-    margin-left: 10px;
+  margin-left: 10px;
 
-    li {
-        list-style: none;
-        font-size: 14px;
-        padding-bottom: 10px;
-        font-weight: 100;
+  li {
+    list-style: none;
+    font-size: 14px;
+    font-weight: 100;
+  }
+
+  .day-detail {
+    display: flex !important;
+    align-items: center;
+    justify-content: start;
+
+    .temp-detail {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      margin-right: 15px;
+
+      h5 {
+        font-size: 15px;
+      }
+
+      img {
+        width: 40px;
+      }
     }
-    
-    .last-li {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+  }
 
-        div {
-            display: flex;
-            flex-direction: row !important;
-            align-items: center;
-            h5 {
-                font-size: 16px;
-                font-weight: 400;
-                
-            }
-            img {
-                width: 35px;
-            }
-        }
+  .day-item div {
+    color: rgb(53, 53, 53);
+    display: flex;
+    flex-direction: row !important;
+
+    h6 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-right: 5px;
     }
-
-    .day-item div {
-        margin-top: 10px;
-        color: rgb(53, 53, 53);
-        display: flex;
-        padding-bottom: 3px;
-        flex-direction: row !important;
-
-        h6{ 
-            font-size: 16px;
-            font-weight: 400;
-            margin-right: 5px;
-        }
-    }
+  }
 }
 
-.overly {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(110, 105, 105, 0.527);
-    overflow: hidden;
-}
-
-.hidden-modal {
-    display: none;
-    transition: ease-in-out 0.3s;
-}
 .show-modal {
-    display: block;
-    transition: ease-in-out 0.3s;
+  display: flex !important;
 }
+.overly {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(56, 56, 56, 0.301);
+  display: none;
+  justify-content: center;
+  align-items: center;
 
-.modal-container {
-    position: absolute;
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: rgb(240, 240, 240);
     width: 500px;
-    height: 500px;
-    background-color: white;
-    border-radius: 2px;
-    border: 1px solid rgba(83, 82, 82, 0.644);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid rgb(124, 124, 124);
 
     .modal-header {
-        width: 100%;
-        height: 45px;
-        margin-top: 10px;
-        border-bottom: 0.1px solid rgba(117, 117, 117, 0.562);
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgb(58, 58, 58);
+      * {
+        padding: 10px;
+      }
+    }
+
+    .modal-main {
+      margin: 20px;
+
+      ul {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        p {
-            font-size: 16px;
-            font-weight: 500;
-            margin-left: 10px;
-        }
-        
-        button {
-            font-size: 17px;
-            background: none;
-            border: none;
-            color: black;
-            margin-right: 10px;
-        }
-    }
-
-    .modal-main{
+        flex-direction: column;
         width: 60%;
-        margin-left: 20px;
-        margin-top: 30px;
-        
-        ul{
+
+        li {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 5px;
+          align-items: center;
+
+          h6 {
+            font-size: 14px;
+            font-weight: 300;
+          }
+          div {
             display: flex;
-            justify-content: space-evenly;
-            flex-direction: column;
+            align-items: center;
+            margin: 0 5px;
 
-            li {
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-
-                h6 {
-                    font-size: 15px;
-                    font-weight: 100;
-                    margin-right: 10px;
-                }
-                p {
-                    font-size: 12px;
-                    font-weight: 100;
-                }
-
-                div {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    margin-right: 10px;
-                    h6 {
-                        font-size: 16px;
-                        font-weight: 100;
-                    }
-                    img {
-                        width: 30px;
-                    }
-                }
+            img {
+              width: 35px;
+              height: auto;
             }
+            h6 {
+              font-size: 14px;
+              font-weight: 300;
+            }
+          }
+
+          p {
+            font-size: 12px;
+            font-weight: 200;
+          }
         }
+      }
     }
+  }
 }
 
 .App {
-    width: 800px;
-    height: 100vh;
+  width: 800px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  .row {
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row !important;
+  }
+
+  header {
+    width: 100%;
+    max-height: 150px;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    .search-input {
+      border: 1px solid black;
+      max-width: 50%;
+      min-width: 300px;
+      width: 500px;
+      height: 30px;
+      border-radius: 1px;
+    }
+    .search-btn {
+      width: 150px;
+      height: 30px;
+      border-radius: 10px;
+      background-color: rgb(56, 56, 56);
+      color: white;
+      cursor: pointer;
+    }
+  }
 
-    
-    .row {
-        width: 100%;
-        height: auto;
+  .col-6 {
+    width: 100%;
+    flex-grow: 6;
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .city-detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+
+      .city-name {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: start;
+
+        h4 {
+          color: $min-color;
+        }
+      }
+
+      .temperature-detail {
+        display: flex;
+        justify-content: start;
+        margin-top: 10px;
+
+        .detail {
+          border-left: 2px solid black;
+        }
+      }
+      .main-temperature {
+        display: flex;
+        justify-content: start;
         flex-direction: row;
-    }
-
-    header {
-        width: 100%;
-        max-height: 150px;
-        min-height: 80px;
-        display: flex;
-        justify-content: center;
         align-items: center;
-        .search-input {
-            border: 1px solid black;
-            max-width: 50%;
-            min-width: 300px;
-            width: 500px;
-            height: 30px;
-            border-radius: 1px;
+
+        img {
+          width: 45px;
         }
-        .search-btn {
-            width: 150px;
-            height: 30px;
-            border-radius: 10px;
-            background-color: rgb(56, 56, 56);
-            color: white;
-            cursor: pointer;
+
+        h2 {
+          font-size: 35px;
+          font-weight: 400;
+          font-family: inherit;
         }
+      }
+
+      .feels-like {
+        display: flex;
+        flex-direction: row;
+        font-size: 25px;
+        font-weight: 300;
+
+        h6 {
+          font-weight: 400;
+          margin-right: 3px;
+        }
+      }
     }
 
-        .col-6 {
-            width: 100%;
-            flex-grow: 6;
+    .day-forecast {
+      display: flex;
+      justify-content: end;
+    }
 
-            div {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .city-detail {
-                display: flex;
-                flex-direction: column;
-                justify-content: start;
-
-                .city-name {
-                    display: flex;
-                    justify-content: start;
-
-                    h4 {
-                        color: $min-color;
-                    }
-                }
-                
-                .temperature-detail {
-                    display: flex;
-                    justify-content: start;
-                    margin-top: 10px;
-                    
-                    .detail {
-                        border-left: 2px solid black;
-                    }
-                }
-                .main-temperature {
-                    display: flex;
-                    justify-content: start;
-                    flex-direction: row;
-                    align-items: center;
-
-                    img {
-                        width: 45px;
-                    }
-
-                    h2 {
-                        font-size: 35px;
-                        font-weight: 400;
-                        font-family: inherit;
-                    }
-                }
-
-                .feels-like {
-                    display: flex;
-                    flex-direction: row;
-                    font-size: 25px;
-                    font-weight: 300;
-
-                    h6 {
-                        font-weight: 400;
-                    }
-                }
-            }
-
-            .day-forecast {
-                display: flex;
-                justify-content: end;
-
-            }
-
-            .Hourly-btn {
-                width: 60%;
-                font-size: 16px;
-                background-color: $min-color;
-                color: black;
-                font-weight: 500;
-                padding: 7px 5px;
-                margin-top: 10px;
-                cursor: pointer;
-                border-radius: 5px;
-                border: none;
-                outline: none;
-            }
-
-        }
-
+    .Hourly-btn {
+      width: 60%;
+      font-size: 16px;
+      background-color: $min-color;
+      color: black;
+      font-weight: 500;
+      padding: 7px 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+  }
 }

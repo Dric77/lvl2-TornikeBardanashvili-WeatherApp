@@ -1,67 +1,23 @@
-import React, { useState } from 'react';
-import '../App.scss';
+import React, { children, useState } from "react";
+import "../App.scss";
+import CancelBtn from "./CancelBtn";
 
-function Modal({showModal,setShowModal, overly, setOverly}) {
+const Modal = ({ showModal, setShowModal, data, children }) => {
+  let modalHandller = () => {
+    setShowModal("overly");
+  };
 
-    let hideModal = () => {
-        setShowModal('hidden-modal');
-        setOverly('hidden-modal')
-    }
-
-    return (
-        <div className={showModal}>
-            <div className='modal-container'>
-            <div className='modal-header'>
-                <p>SundayM, June 13</p>
-                <button onClick={hideModal} className="close-modal">X</button>
-            </div>
-            <div className="modal-main">
-                <ul>
-                    <li>
-                        <h6>6PM</h6>
-                        <div>
-                            <img src="https://www.weatherbit.io/static/img/icons/c02d.png" />
-                            <h6>15&#8451;</h6>
-                        </div>
-                        <p>Clear Sky</p>
-                    </li>
-                    <li>
-                        <h6>6PM</h6>
-                        <div>
-                            <img src="https://www.weatherbit.io/static/img/icons/c02d.png" />
-                            <h6>15&#8451;</h6>
-                        </div>
-                        <p>Clear Sky</p>
-                    </li>
-                    <li>
-                        <h6>6PM</h6>
-                        <div>
-                            <img src="https://www.weatherbit.io/static/img/icons/c02d.png" />
-                            <h6>15&#8451;</h6>
-                        </div>
-                        <p>Clear Sky</p>
-                    </li>
-                    <li>
-                        <h6>6PM</h6>
-                        <div>
-                            <img src="https://www.weatherbit.io/static/img/icons/c02d.png" />
-                            <h6>15&#8451;</h6>
-                        </div>
-                        <p>Clear Sky</p>
-                    </li>
-                    <li>
-                        <h6>6PM</h6>
-                        <div>
-                            <img src="https://www.weatherbit.io/static/img/icons/c02d.png" />
-                            <h6>15&#8451;</h6>
-                        </div>
-                        <p>Clear Sky</p>
-                    </li>
-                </ul>
-            </div>
+  return (
+    <div className={showModal} onClick={modalHandller}>
+      <div className="modal-container">
+        <div className="modal-header">
+          <p> {data ? data.date : null} </p>
+          <CancelBtn setShowModal={setShowModal} />
         </div>
-        </div>
-    )
-}
+        <div className="modal-main"> {children} </div>
+      </div>
+    </div>
+  );
+};
 
-export default Modal
+export default Modal;
