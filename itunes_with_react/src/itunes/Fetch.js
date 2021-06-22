@@ -1,0 +1,8 @@
+import axios from "axios";
+
+const fetchData = async (url) => {
+  const res = await fetch(url);
+  return res.json();
+};
+
+export { fetchData };
