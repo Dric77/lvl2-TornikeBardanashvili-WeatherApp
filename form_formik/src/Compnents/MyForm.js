@@ -5,7 +5,10 @@ import * as Yup from "yup";
 import Loader from "./Loader";
 
 function MyForm() {
-  const [statusCode, setStatusCode] = useState();
+  const [statusCode, setStatusCode] = useState({
+    code: "",
+    message: ""
+  });
   const [loading, setLoading] = useState(false);
 
   const initialValues = {
@@ -31,7 +34,11 @@ function MyForm() {
       }
     })
       .then((response) => {
-        setStatusCode(response.status);
+        console.log(response);
+        setStatusCode({
+          code: response.status,
+          message: response.statusText
+        });
         return response.json();
       })
       .then((json) => console.log(json))
@@ -56,7 +63,7 @@ function MyForm() {
       .required("This feild is requird")
   });
 
-  if (statusCode === 201)
+  if (statusCode.code === 201)
     return (
       <div className="formik-container">
         <h1>You are register!</h1>
@@ -65,6 +72,16 @@ function MyForm() {
         </button>
       </div>
     );
+  else if (statusCode.code) {
+    return (
+      <div className="formik-container">
+        <h2 className="status-error">
+          {" "}
+          Registration feild {statusCode.message}{" "}
+        </h2>
+      </div>
+    );
+  }
 
   return (
     <div className="formik-container">
