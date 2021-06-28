@@ -51,14 +51,18 @@ function MyForm() {
       .email("Invaild email format")
       .required("This feild is requird"),
     password: Yup.string().required("This feild is requird"),
-    rePassword: Yup.string().required("This feild is requird")
+    rePassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "password don't match")
+      .required("This feild is requird")
   });
 
   if (statusCode === 201)
     return (
-      <div>
+      <div className="formik-container">
         <h1>You are register!</h1>
-        <button onClick={() => setStatusCode("")}>Back Registration</button>
+        <button className="back-btn" onClick={() => setStatusCode("")}>
+          Back Registration
+        </button>
       </div>
     );
 
@@ -73,35 +77,57 @@ function MyForm() {
           <Form>
             <div className="input-container error">
               <label htmlFor="firstName">First Name</label>
-              <Field type="text" id="firstName" name="firstName" />
+              <Field
+                className="input"
+                type="text"
+                id="firstName"
+                name="firstName"
+              />
               <ErrorMessage name="firstName" />
             </div>
 
             <div className="input-container error">
               <label htmlFor="lastName">Last Name</label>
-              <Field type="text" id="lastName" name="lastName" />
+              <Field
+                className="input"
+                type="text"
+                id="lastName"
+                name="lastName"
+              />
               <ErrorMessage name="lastName" />
             </div>
 
             <div className="input-container error">
               <label htmlFor="email">Email</label>
-              <Field type="email" id="email" name="email" />
+              <Field className="input" type="email" id="email" name="email" />
               <ErrorMessage name="email" />
             </div>
 
             <div className="input-container error">
               <label htmlFor="password">Password</label>
-              <Field type="password" id="password" name="password" />
+              <Field
+                className="input"
+                type="password"
+                id="password"
+                name="password"
+              />
               <ErrorMessage name="password" />
             </div>
 
             <div className="input-container error">
               <label htmlFor="rePassword">RePassword</label>
-              <Field type="password" id="rePassword" name="rePassword" />
+              <Field
+                className="input"
+                type="password"
+                id="rePassword"
+                name="rePassword"
+              />
               <ErrorMessage name="rePassword" />
             </div>
 
-            <button type="submit">Register</button>
+            <button type="submit" className="submit-btn">
+              Register
+            </button>
           </Form>
         </Formik>
       </Loader>

@@ -4,11 +4,13 @@ import "../App.scss";
 function Loader({ loading, children }) {
   if (loading)
     return (
-      <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div className="formik-container">
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     );
 
