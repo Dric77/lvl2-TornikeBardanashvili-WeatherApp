@@ -3,6 +3,7 @@ import "../App.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Loader from "./Loader";
+import SeccesMessage from "./SeccesMessage";
 
 function MyForm() {
   const [statusCode, setStatusCode] = useState({
@@ -62,26 +63,6 @@ function MyForm() {
       .oneOf([Yup.ref("password"), null], "password don't match")
       .required("This feild is requird")
   });
-
-  if (statusCode.code === 201)
-    return (
-      <div className="formik-container">
-        <h1>You are register!</h1>
-        <button className="back-btn" onClick={() => setStatusCode("")}>
-          Back Registration
-        </button>
-      </div>
-    );
-  else if (statusCode.code) {
-    return (
-      <div className="formik-container">
-        <h2 className="status-error">
-          {" "}
-          Registration feild {statusCode.message}{" "}
-        </h2>
-      </div>
-    );
-  }
 
   return (
     <div className="formik-container">
